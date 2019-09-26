@@ -1,3 +1,6 @@
+var mocha = require("mocha");
+var describe = mocha.describe;
+var it = mocha.it;
 var expect = require("chai").expect;
 
 describe("canary test", function() {
