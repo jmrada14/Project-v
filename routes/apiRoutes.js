@@ -1,13 +1,14 @@
 
-let router = require('express').Router();
-let db = require('/models')
+let router = require("express").Router();
+let db = require("/models");
 
 module.exports = router;
 
 // GET /api/messages
-router.get('/', async (req, res, next) => {
+//Async and await were taken out
+router.get("/", (req, res, next) => {
   try {
-    let messages = await db.Message.findAll();
+    let messages = db.Message.findAll();
     res.json(messages);
   } catch (err) {
     next(err);
@@ -16,18 +17,18 @@ router.get('/', async (req, res, next) => {
 
 // POST /api/messages
 
-router.post('/', async (req, res, next) =>{
+router.post("/", (req, res, next) => {
 
-  // We don't have proper users yet
+  // We don"t have proper users yet
   try {
-    let user = await db.User.findOrCreate({
+    let user = db.User.findOrCreate({
       where: {
-        name: req.body.name || 'Juan'
+        name: req.body.name || "Juan"
       }
     });
     let message = Message.build(req.body);
     message.set(User, { save: false });
-    await message.save()
+    message.save();
     let returnMessage = message.toJSON();
     returnMessage.user = user;
     res.json(returnMessage);
