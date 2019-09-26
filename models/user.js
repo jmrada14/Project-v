@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     User.associate = (models) => {
         User.hasMany(models.Message, {
             onDelete: "cascade"
-        })
+        });
     };
     User.associate = (models) => {
         User.belongsToMany(models.Room, {
@@ -19,5 +19,5 @@ module.exports = (sequelize, DataTypes) => {
         });
     };
 
-    return User
+    return User;
 };

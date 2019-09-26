@@ -24,7 +24,7 @@
         "no-unused-vars": "error",
         "camelcase": "error",
         "indent": [
-            "error",
+            "warn",
             2
         ],
         "quotes": [
