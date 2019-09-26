@@ -9,5 +9,15 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "cascade"
         })
     };
+    User.associate = (models) => {
+        User.belongsToMany(models.Room, {
+            through: "room_member",
+            foreignKey: {
+            name: "roomId",
+            field: "room_id",
+            }
+        });
+    };
+
     return User
 };
