@@ -2,7 +2,8 @@
     "env": {
         "browser": true,
         "commonjs": true,
-        "node": true
+        "node": true,
+        "es6": true
     },
     "extends": "prettier",
     "plugins": [
@@ -34,6 +35,6 @@
             "error",
             "always"
         ],
-        "prettier/prettier": "error"
+        "prettier/prettier": "warn"
     }
 }
