@@ -3,6 +3,11 @@ let db = require("/models");
 
 module.exports = router;
 //get all messages
+
+
+// GET /api/messages
+//Async and await were taken out
+
 router.get("/api/messages", (req, res) => {
   let query = {};
   if (req.query.user_id) {
@@ -23,6 +28,7 @@ router.get("/api/messages/:id", (req, res) => {
     },
     include: [db.User]
   }).then((dbMessage) => {
+  }).then(function(dbMessage) {
     res.json(dbMessage);
   });
 });
@@ -48,3 +54,4 @@ router.post("/", (req, res, next) => {
     next(err);
   }
 });
+
