@@ -6,5 +6,5 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    return room;
+    return Room;
 };

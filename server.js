@@ -1,10 +1,11 @@
 require("dotenv").config();
 let express = require("express");
+let app = express();
 let exphbs = require("express-handlebars");
 let db = require("./models");
 let http = require("http").Server(app);
-let io = require("socket.io")(http);
-let app = express();
+let io = require("socket")(http);
+require("/socket")(io);
 let PORT = process.env.PORT || 3000;
 
 // Middleware
