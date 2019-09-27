@@ -6,13 +6,17 @@ module.exports = router;
 
 // GET /api/messages
 //Async and await were taken out
-router.get("/", (req, res, next) => {
-  try {
-    let messages = db.Message.findAll();
-    res.json(messages);
-  } catch (err) {
-    next(err);
+router.get("/api/messages", (req, res) => {
+  let query = {};
+  if (req.query.user_id) {
+    query.UserId = req.query.user_id;
   }
+  db.Message.findAll({
+    where: query,
+    include: [db.User]
+  }).then(function(dbMessage) {
+    res.json(dbMessage);
+  });
 });
 
 // POST /api/messages
@@ -36,3 +40,4 @@ router.post("/", (req, res, next) => {
     next(err);
   }
 });
+
