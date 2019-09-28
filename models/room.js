@@ -1,10 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
-  Room = sequelize.define("room", {
-    name: {
-      type: DataTypes.STRING,
-      public: DataTypes.BOOLEAN
-    }
-  });
+    Room = sequelize.define("Room", {
+        name: {
+            type: DataTypes.STRING,
+            public: DataTypes.BOOLEAN
 
-  return room;
+        }
+    });
+    Room.associate = (model) => {
+        Room.hasMany(model.Messages, {
+           onDelete: "cascade"
+        });
+
+    };
+    return Room;
 };

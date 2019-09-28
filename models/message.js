@@ -1,15 +1,12 @@
+
 module.exports = (sequelize, DataTypes) => {
-  let Message = sequelize.define("message", {
+  let Message = sequelize.define("Message", {
     text: DataTypes.STRING
   });
 
-  Message.associate = models => {
-    Message.belongsTo(models.Room, {
-      foreignKey: { name: "roomId", field: "room_id" }
-    });
-    Message.belongsTo(models.User, {
-      foreignKey: { name: "userId", field: "user_id" }
-    });
-  };
+   Message.associate = (model) => {
+      Message.belongsTo(model.Room);
+     Message.belongsTo(model.User);
+   };
   return Message;
 };
