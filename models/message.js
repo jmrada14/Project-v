@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
    Message.associate = (model) => {
-      Message.belongsTo(model.Room)
+      Message.belongsTo(model.Room);
      Message.belongsTo(model.User);
    };
   return Message;
