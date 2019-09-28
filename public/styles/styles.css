@@ -21,6 +21,11 @@ html {
   overflow-y: auto;
   white-space: nowrap;
 }
+
+
+.brand-logo {
+  background-color: #2424ad;
+}
 .msg_card_body {
   overflow-y: auto;
 }
