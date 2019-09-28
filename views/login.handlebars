@@ -2,27 +2,50 @@
   <div class="container-fluid h-100">
     <div class="row justify-content-center h-100">
 
-      <!-- THIS IS WHERE THE FIRST COLUMN STARTS.... THE CONTACTS -->
+      <!-- THIS IS WHERE THE LOGIN STARTS -->
       <div class="col-md-4 col-xl-3 chat">
-        <div class="card mb-sm-3 mb-md-0 contacts_card">
-          <div class="card-header">
-            <div class="input-group">
-              <input type="text" placeholder="Search..." name="" class="form-control search">
-              <div class="input-group-prepend">
-                <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
-              </div>
+        <div class="user_card">
+          <div class="d-flex justify-content-center">
+            <div class="brand_logo_container">
+              <img src="images/Chat-Up-logo-plain.png" class="brand_logo" alt="Logo">
             </div>
           </div>
-          <div class="card-body contacts_body">
-            <form class="contacts">
-              
-              
+          <div class="d-flex justify-content-center form_container">
+            <form>
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" name="" class="form-control input_user" value="" placeholder="username">
+              </div>
+              <div class="input-group mb-2">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+              </div>
+              <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customControlInline">
+                  <label class="custom-control-label" for="customControlInline">Remember me</label>
+                </div>
+              </div>
             </form>
           </div>
-          <div class="card-footer"></div>
+          <div class="d-flex justify-content-center mt-3 login_container">
+            <button type="button" name="button" class="btn login_btn">Login</button>
+          </div>
+          <div class="mt-4">
+            <div class="d-flex justify-content-center links">
+              Don't have an account? <a href="#" class="ml-2">Sign Up</a>
+            </div>
+            <div class="d-flex justify-content-center links">
+              <a href="#">Forgot your password?</a>
+            </div>
+          </div>
         </div>
       </div>
-      
+
     </div>
   </div>
 </body>
