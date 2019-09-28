@@ -1,9 +1,5 @@
 require("dotenv").config();
 let express = require("express");
-let bodyParser = require('body-parser');
-let exphbs = require("express-handlebars");
-let db = require("./models");
-let app = express();
 let PORT = process.env.PORT || 3000;
 let passport = require('passport');
 let http = require('http').Server(app);
@@ -40,7 +36,7 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-let syncOptions = { force: false };
+let syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -48,6 +44,10 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
+
+io.on("connection", () =>{
+  console.log("a user is connected");
+});
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {

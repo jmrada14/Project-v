@@ -1,25 +1,29 @@
 let db = require("../models");
 
-module.exports = function(app) {
- //GET all messages
+//get all messages
+module.exports = (app) => {
 
-  app.get('/messages', (req, res) => {
-    db.Message.findAll({},(err, messages)=> {
-      res.send(messages);
-    })
+  app.get("/api/messages", (req, res) => {
+    let query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+    db.Message.findAll({
+      where: query,
+      include: [db.User]
+    }).then((dbMessage) => {
+      res.json(dbMessage);
+    });
   });
-
-
-
-  // Create a new message
-
-};app.post('/messages', (req, res) => {
-    let message = new db.Message(req.body);
-    message.save((err) =>{
-      if(err){ sendStatus(500);}
-      let io = require('socket.io');
-      io.emit('message', req.body);
-      res.sendStatus(200);
+//get message by user
+  app.get("/api/messages/:id", (req, res) => {
+    db.Message.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.User]
+    }).then((dbMessage) => {
+      res.json(dbMessage);
     });
   });
 
