@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
     Room.associate = (model) => {
-        Room.hasMany(model.Messages, {
+        Room.hasMany(model.Message, {
            onDelete: "cascade"
         });
 
