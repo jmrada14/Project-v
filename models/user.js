@@ -4,20 +4,16 @@ module.exports = (sequelize, DataTypes) => {
         password : DataTypes.STRING
     });
 
-    User.associate = (models) => {
-        User.hasMany(models.Message, {
-            onDelete: "cascade"
-        });
-    };
-    User.associate = (models) => {
-        User.belongsToMany(models.Room, {
-            through: "room_member",
-            foreignKey: {
-            name: "roomId",
-            field: "room_id",
-            }
-        });
-    };
+     User.associate = (models) => {
+         User.hasMany(models.Message, {
+             onDelete: "cascade"
+         });
+     };
+     User.associate = (models) => {
+         User.belongsToMany(models.Room, {
+             through: "UserRoom",
+         });
+     };
 
     return User;
 };

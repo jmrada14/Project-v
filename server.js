@@ -4,8 +4,8 @@ let app = express();
 let exphbs = require("express-handlebars");
 let db = require("./models");
 let http = require("http").Server(app);
-let io = require("socket")(http);
-require("/socket")(io);
+let io = require("socket.io")(http);
+require("./socket/socketio")(io);
 let PORT = process.env.PORT || 3000;
 
 // Middleware
@@ -26,7 +26,7 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-let syncOptions = { force: false };
+let syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

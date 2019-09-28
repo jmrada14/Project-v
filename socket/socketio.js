@@ -1,4 +1,4 @@
-let db = require("/models");
+let db = require("../models");
 console.log(db);
 module.exports = io => {
 
