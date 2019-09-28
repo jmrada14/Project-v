@@ -3,27 +3,22 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/index", function(req, res) {
-    // db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index"
-      // {
-      //   msg: "Welcome!",
-      //   examples: dbExamples
-      // }
-      );
+    db.Message.findAll({}).then(function(dbMessage) {
+      res.render("index", {
+        msg: "Welcome!",
+        messages: dbMessage
+      });
     });
-  // });
+  });
 
   // Load example page and pass in an example by id
   app.get("/login", function(req, res) {
-    // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-    res.render(
-      "login"
-      // , {
-      //   example: dbExample
-      //}
-    );
+    db.Message.findAll({}).then(function(dbMessage){
+      res.render("login", {
+        messages: dbMessage
+      });
+    });
   });
-  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
