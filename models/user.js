@@ -8,10 +8,10 @@ module.exports = (sequelize, DataTypes) => {
          User.hasMany(models.Message, {
              onDelete: "cascade"
          });
-     };
-     User.associate = (models) => {
+     // };
+     // User.associate = (models) => {
          User.belongsToMany(models.Room, {
-             through: "UserRoom",
+             through: "UserRoom"
          });
      };
 

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    Room = sequelize.define("Room", {
+    let Room = sequelize.define("Room", {
         name: {
             type: DataTypes.STRING,
             public: DataTypes.BOOLEAN
@@ -8,7 +8,11 @@ module.exports = (sequelize, DataTypes) => {
     });
     Room.associate = (model) => {
         Room.hasMany(model.Message, {
-           onDelete: "cascade"
+            onDelete: "cascade"
+        });
+
+        Room.belongsToMany(model.User, {
+            through: "UserRoom"
         });
 
     };
