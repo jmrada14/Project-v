@@ -2,9 +2,9 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/index", function(req, res) {
+  app.get("/chatroom", function(req, res) {
     db.Message.findAll({}).then(function(dbMessage) {
-      res.render("index", {
+      res.render("chatroom", {
         msg: "Welcome!",
         messages: dbMessage
       });
