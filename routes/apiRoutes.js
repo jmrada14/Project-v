@@ -35,12 +35,17 @@ module.exports = (app) => {
  //GET ROOM
   app.get("/api/room", (req, res) => {
     let query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
+    // console.log(req.query)
+      query.UserId = 1;
+
     db.Room.findAll({
-      where: query,
-      include: [db.User]
+      // where: query,
+      include: [{
+        model: db.User,
+        through: {
+          where: query
+        }
+      }]
     }).then((dbMessage) => {
       res.json(dbMessage);
     });
