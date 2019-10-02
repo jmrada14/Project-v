@@ -21,8 +21,11 @@
     "express-session": "^1.16.2",
     "mysql2": "^1.6.5",
     "nodemon": "^1.19.3",
+<<<<<<< HEAD
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+=======
+>>>>>>> master
     "sequelize": "^5.8.6",
     "sequelize-cli": "^5.5.1",
     "socket.io": "^2.3.0"

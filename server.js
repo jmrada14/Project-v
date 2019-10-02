@@ -48,11 +48,21 @@ io.on("connection", () => {
 });
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {
+<<<<<<< HEAD
   db.User.create({
     email: "alex@gmail.com",
     password: "1234"
   });
 
+=======
+  // db.User.create({
+  //   username: "juan",
+  //   password: "1234"
+  // });
+  db.Room.create({
+    name: "Test"
+  });
+>>>>>>> master
   app.listen(PORT, () => {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",

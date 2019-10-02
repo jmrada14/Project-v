@@ -2,6 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
+<<<<<<< HEAD
   // app.get("/index", function(req, res) {
   //   db.Message.findAll({}).then(function(dbMessage) {
   //     res.render("index", {
@@ -10,6 +11,16 @@ module.exports = function(app) {
   //     });
   //   });
   // });
+=======
+  app.get("/chatroom", function(req, res) {
+    db.Message.findAll({}).then(function(dbMessage) {
+      res.render("chatroom", {
+        msg: "Welcome!",
+        messages: dbMessage
+      });
+    });
+  });
+>>>>>>> master
 
   // Load example page and pass in an example by id
   app.get("/", function(req, res) {
