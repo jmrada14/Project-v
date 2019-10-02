@@ -1,9 +1,11 @@
 // var db = require("../models");
 
-module.exports = (app) => {
+module.exports = app => {
   // Load index page
 
-  app.get("/chatroom", (req, res) => {
+
+  app.get("/chatroom", function(req, res) {
+
     res.render("chatroom", {});
   });
 
