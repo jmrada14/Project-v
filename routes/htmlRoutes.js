@@ -3,14 +3,9 @@
 module.exports = (app) => {
   // Load index page
 
-  // app.get("/chatroom", function(req, res) {
-  //   db.Message.findAll({}).then(function(dbMessage) {
-  //     res.render("chatroom", {
-  //       msg: "Welcome!",
-  //       messages: dbMessage
-  //     });
-  //   });
-  // });
+app.get("/chatroom", (req, res) => {
+  res.render("chatroom", {})
+});
 
   // Load example page and pass in an example by id
   app.get("/", (req, res) => {

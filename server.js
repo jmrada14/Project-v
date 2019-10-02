@@ -7,8 +7,7 @@ let db = require("./models");
 let http = require("http").Server(app);
 let passport = require("./config/middleware/passport");
 let io = require("socket.io")(http);
-require("./socket/socketio")(io);
-let PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT || 6500;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -21,7 +20,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
+require("./socket/socketio")(io);
 // Handlebars
 app.engine(
   "handlebars",
@@ -48,9 +47,6 @@ io.on("connection", () => {
 });
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {
-  db.User.create({
-    email: "alex@gmail.com",
-    password: "1234"
   });
   // db.User.create({
   //   username: "juan",
@@ -64,6 +60,6 @@ db.sequelize.sync(syncOptions).then(() => {
       PORT
     );
   });
-});
+
 
 module.exports = app;
