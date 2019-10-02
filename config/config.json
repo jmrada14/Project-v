@@ -1,7 +1,12 @@
 {
   "development": {
+<<<<<<< HEAD
+    "username": "root",
+    "password": "billy",
+=======
     "username": "juan",
     "password": "juan",
+>>>>>>> master
     "database": "chatapp",
     "host": "localhost",
     "dialect": "mysql"

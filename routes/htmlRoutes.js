@@ -2,6 +2,16 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
+<<<<<<< HEAD
+  // app.get("/index", function(req, res) {
+  //   db.Message.findAll({}).then(function(dbMessage) {
+  //     res.render("index", {
+  //       msg: "Welcome!",
+  //       messages: dbMessage
+  //     });
+  //   });
+  // });
+=======
   app.get("/chatroom", function(req, res) {
     db.Message.findAll({}).then(function(dbMessage) {
       res.render("chatroom", {
@@ -10,14 +20,11 @@ module.exports = function(app) {
       });
     });
   });
+>>>>>>> master
 
   // Load example page and pass in an example by id
-  app.get("/login", function(req, res) {
-    db.Message.findAll({}).then(function(dbMessage){
-      res.render("login", {
-        messages: dbMessage
-      });
-    });
+  app.get("/", function(req, res) {
+    res.render("signup", {});
   });
 
   // Render 404 page for any unmatched routes
