@@ -1,34 +1,24 @@
-var db = require("../models");
+// var db = require("../models");
 
-module.exports = function(app) {
+module.exports = (app) => {
   // Load index page
-<<<<<<< HEAD
-  // app.get("/index", function(req, res) {
+
+  // app.get("/chatroom", function(req, res) {
   //   db.Message.findAll({}).then(function(dbMessage) {
-  //     res.render("index", {
+  //     res.render("chatroom", {
   //       msg: "Welcome!",
   //       messages: dbMessage
   //     });
   //   });
   // });
-=======
-  app.get("/chatroom", function(req, res) {
-    db.Message.findAll({}).then(function(dbMessage) {
-      res.render("chatroom", {
-        msg: "Welcome!",
-        messages: dbMessage
-      });
-    });
-  });
->>>>>>> master
 
   // Load example page and pass in an example by id
-  app.get("/", function(req, res) {
+  app.get("/", (req, res) => {
     res.render("signup", {});
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", (req, res) => {
     res.render("404");
   });
 };
