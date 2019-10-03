@@ -3,12 +3,12 @@ let session = require("express-session");
 let express = require("express");
 let app = express();
 let exphbs = require("express-handlebars");
-let db = require("./models");
+// let db = require("./models");
 let http = require("http").Server(app);
 let passport = require("./config/middleware/passport");
 let io = require("socket.io")(http);
-require("./socket/socketio")(io);
-let PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT || 3051;
+
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -21,7 +21,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
+require("./socket/socketio")(io);
 // Handlebars
 app.engine(
   "handlebars",
@@ -43,14 +43,16 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-io.on("connection", () => {
-  console.log("a user is connected");
+app.listen(PORT, () => {
+  console.log(
+    "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+    PORT,
+    PORT
+  );
 });
+
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {
-  db.User.create({
-    email: "alex@gmail.com",
-    password: "1234"
   });
   // db.User.create({
   //   username: "juan",
@@ -64,6 +66,5 @@ db.sequelize.sync(syncOptions).then(() => {
       PORT
     );
   });
-});
 
 module.exports = app;

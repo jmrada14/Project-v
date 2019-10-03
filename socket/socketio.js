@@ -1,20 +1,43 @@
 let db = require("../models");
 console.log(db);
 module.exports = io => {
-
+    //listen on every connection
     io.on("connection", socket => {
+        console.log("New user connected");
+        //default username
+        socket.username = "Anonymous";
 
-        console.log(socket.id, "is connected to the server!");
+//listen on every connection
+        io.on('connection', (socket) => {
+            console.log('New user connected');
+            //default username
+            socket.username = "Anonymous";
 
-        socket.on("new-message", message => {
-            socket.broadcast.emit("new-message", message);
+            //listen on new_message
+            socket.on('new_message', (data) => {
+                //broadcast the new message
+                io.sockets.emit('new_message', {message: data.message, username: socket.username});
+            });
+
+            //listen on typing
+            socket.on('typing', (data) => {
+                socket.broadcast.emit('typing', {username: socket.username})
+            });
+
+
+            //listen on new_message
+            socket.on("new_message", data => {
+                //broadcast the new message
+                io.sockets.emit("new_message", {
+                    message: data.message,
+                    username: socket.username
+                });
+            });
+
+
         });
-
-        socket.on("new-room", channel => {
-            socket.broadcast.emit("new-room", channel);
-        });
-
+        return io;
     });
-return io;
-
 };
+
+//test
