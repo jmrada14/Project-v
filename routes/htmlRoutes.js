@@ -7,7 +7,6 @@ module.exports = app => {
     res.render("chatroom", {});
   });
 
-
   // Load example page and pass in an example by id
   app.get("/", (req, res) => {
     res.render("signup", {});

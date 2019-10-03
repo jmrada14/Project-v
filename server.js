@@ -9,7 +9,6 @@ let passport = require("./config/middleware/passport");
 let io = require("socket.io")(http);
 let PORT = process.env.PORT || 3051;
 
-
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -53,18 +52,19 @@ app.listen(PORT, () => {
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {
-  });
-  // db.User.create({
-  //   username: "juan",
-  //   password: "1234"
-  // });
+  console.log("hello");
+});
+// db.User.create({
+//   username: "juan",
+//   password: "1234"
+// });
 
-  app.listen(PORT, () => {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
+app.listen(PORT, () => {
+  console.log(
+    "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+    PORT,
+    PORT
+  );
+});
 
 module.exports = app;
