@@ -3,11 +3,12 @@ let session = require("express-session");
 let express = require("express");
 let app = express();
 let exphbs = require("express-handlebars");
-// let db = require("./models");
+let db = require("./models");
 let http = require("http").Server(app);
 let passport = require("./config/middleware/passport");
 let io = require("socket.io")(http);
-let PORT = process.env.PORT || 3051;
+
+let PORT = process.env.PORT || 2000;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -42,17 +43,9 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-app.listen(PORT, () => {
-  console.log(
-    "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-    PORT,
-    PORT
-  );
-});
-
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(() => {
-  console.log("hello");
+  console.log("test");
 });
 // db.User.create({
 //   username: "juan",
