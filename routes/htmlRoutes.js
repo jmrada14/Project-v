@@ -3,9 +3,7 @@
 module.exports = app => {
   // Load index page
 
-
   app.get("/chatroom", function(req, res) {
-
     res.render("chatroom", {});
   });
 
