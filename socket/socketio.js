@@ -24,8 +24,10 @@ module.exports = io => {
 
       //listen on typing
       socket.on("typing", data => {
+
         socket.broadcast.emit("typing", { username: socket.username });
         console.log(data);
+
       });
 
       //listen on new_message
