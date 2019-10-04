@@ -7,8 +7,8 @@ let db = require("./models");
 let http = require("http").Server(app);
 let passport = require("./config/middleware/passport");
 let io = require("socket.io")(http);
+let PORT = process.env.PORT || 4150;
 
-let PORT = process.env.PORT || 2000;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));

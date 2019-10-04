@@ -49,51 +49,50 @@
 
     </div>
   </div>
-  <script src="jquery-3.4.1.min.js"></script>
-  <script>
-      $(document).ready(function() {
-          // Getting references to our form and input
-          var signUpForm = $(".sign-up");
-          var emailInput = $(".input_user");
-          var passwordInput = $(".input_pass");
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!--      $(document).ready(function() {-->
+<!--          // Getting references to our form and input-->
+<!--          var signUpForm = $(".sign-up");-->
+<!--          var emailInput = $(".input_user");-->
+<!--          var passwordInput = $(".input_pass");-->
 
-          signUpForm.on(".login_btn", function (event) {
-              event.preventDefault();
-              var userData = {
-                  email: emailInput.value().trim(),
-                  password: passwordInput.value().trim()
-              };
+<!--          signUpForm.on(".login_btn", function (event) {-->
+<!--              event.preventDefault();-->
+<!--              var userData = {-->
+<!--                  email: emailInput.value().trim(),-->
+<!--                  password: passwordInput.value().trim()-->
+<!--              };-->
 
-              if (!userData.email || !userData.password) {
-                  return;
-              }
-              // If we have an email and password, run the signUpUser function
-              signUpUser(userData.email, userData.password);
-              emailInput.val("");
-              passwordInput.val("");
-          });
+<!--              if (!userData.email || !userData.password) {-->
+<!--                  return;-->
+<!--              }-->
+<!--              // If we have an email and password, run the signUpUser function-->
+<!--              signUpUser(userData.email, userData.password);-->
+<!--              emailInput.val("");-->
+<!--              passwordInput.val("");-->
+<!--          });-->
 
-          // Does a post to the signup route. If successful, we are redirected to the members page
-          // Otherwise we log any errors
-          function signUpUser(email, password) {
-              $.post("/api/signup", {
-                  email: email,
-                  password: password
-              })
-              //   .then(function(data) {
-              //     window.location.replace("/members");
-              //     // If there's an error, handle it by throwing up a bootstrap alert
-              //   })
-                      .catch(handleLoginErr);
-          }
+<!--          // Does a post to the signup route. If successful, we are redirected to the members page-->
+<!--          // Otherwise we log any errors-->
+<!--          function signUpUser(email, password) {-->
+<!--              $.post("/api/signup", {-->
+<!--                  email: email,-->
+<!--                  password: password-->
+<!--              })-->
+<!--              //   .then(function(data) {-->
+<!--              //     window.location.replace("/members");-->
+<!--              //     // If there's an error, handle it by throwing up a bootstrap alert-->
+<!--              //   })-->
+<!--                      .catch(handleLoginErr);-->
+<!--          }-->
 
-          function handleLoginErr(err) {
-              $("#alert .msg").text(err.responseJSON);
-              $("#alert").fadeIn(500);
-          }
-      });
+<!--          function handleLoginErr(err) {-->
+<!--              $("#alert .msg").text(err.responseJSON);-->
+<!--              $("#alert").fadeIn(500);-->
+<!--          }-->
+<!--      });-->
 
-  </script>
-  
+<!--  </script>-->
+<!--  -->
 
 </body>
